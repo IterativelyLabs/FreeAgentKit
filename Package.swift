@@ -5,6 +5,8 @@ import PackageDescription
 
 let package = Package(
     name: "FreeAgent",
+    platforms: [.macOS(.v10_12),
+                .iOS(.v11)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -12,6 +14,7 @@ let package = Package(
             targets: ["FreeAgent"]),
     ],
     dependencies: [
+        .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.2.0"))
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
     ],
@@ -20,7 +23,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "FreeAgent",
-            dependencies: []),
+            dependencies: ["Alamofire"]),
         .testTarget(
             name: "FreeAgentTests",
             dependencies: ["FreeAgent"]),
