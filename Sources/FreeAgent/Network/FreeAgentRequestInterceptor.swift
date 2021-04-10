@@ -2,7 +2,7 @@
 import Alamofire
 import Foundation
 
-public final class FreeAgentRequestInterceptor: Alamofire.RequestInterceptor {
+internal final class FreeAgentRequestInterceptor: Alamofire.RequestInterceptor {
 
     // FIXME: Remove this and get it from keychain
     private let accessToken = "1ABPaABv-3w1zw1kS_oV1DZ7PPl2yfFJE9KvLQR6e"
