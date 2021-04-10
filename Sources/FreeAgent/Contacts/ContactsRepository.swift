@@ -50,11 +50,9 @@ public final class StandardContactsRepository: Repository, ContactsRepository {
                         let contactResponse = try decoder.decode(ContactsResponse.self, from: contactsData)
                         onCompletion(.success(contactResponse.contacts))
                     } catch {
-                        print("What happened?")
                         onCompletion(.failure(self.badResponse()))
                     }
                 } else {
-                    print("No data!")
                     onCompletion(.failure(self.badResponse()))
                 }
             case .failure(let error):

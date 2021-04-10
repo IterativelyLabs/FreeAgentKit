@@ -22,11 +22,11 @@ public struct Contact: Codable {
     let locale: String?
     let accountBalance: String?
     let usesContactInvoiceSequence: Bool?
-    let chargeSalesTax: String?
+    let chargeSalesTax: ChargeSalesTax
     let salesTaxRegistrationNumber: String?
     let activeProjectsCount: Int?
-    let directDebitMandateState: String?
-    let status: String
+    let directDebitMandateState: DirectDebitMandateState?
+    let status: ContactStatus
     let createdAt: String
     let updatedAt: String    
     
@@ -60,4 +60,25 @@ public struct Contact: Codable {
         case createdAt = "created_at"
         case updatedAt = "updated_at"
     }
+}
+
+public enum DirectDebitMandateState: String, Codable {
+    case active = "active"
+    case cancelled = "cancelled"
+    case expired = "expired"
+    case failed = "failed"
+    case inactive = "inactive"
+    case pending =  "pending"
+    case setup = "setup"
+}
+
+public enum ContactStatus: String, Codable {
+    case active = "Active"
+    case hidden = "Hidden"
+}
+
+public enum ChargeSalesTax: String, Codable {
+    case auto = "Auto"
+    case always = "Always"
+    case never = "Never"
 }
