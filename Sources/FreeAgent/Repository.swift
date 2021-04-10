@@ -1,13 +1,19 @@
+import Alamofire
 import Foundation
 
 
-class Repository {
-    private let baseURL: String
+open class Repository {
     
-    init(baseURL: String) {
+    let baseURL: String
+    let sessionManager: Session
+    let apiURL: String
+    
+    
+    init(baseURL: String, path: String, sessionManager: Session) {
         self.baseURL = baseURL
+        self.apiURL = "\(baseURL)\(path)"
+        self.sessionManager = sessionManager
     }
-    
 
     // 
     

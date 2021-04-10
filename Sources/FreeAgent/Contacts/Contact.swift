@@ -1,31 +1,31 @@
 import Foundation
 
-struct Contact: Codable {
+public struct Contact: Codable {
     let id: Int?
     let url: String
     let firstName: String?
     let lastName: String?
     let organisationName: String?
     let email: String
-    let billingEmail: String
-    let phoneNumber: String
-    let mobile: String
-    let address1: String
-    let address2: String
-    let address3: String
-    let town: String
-    let region: String
-    let postcode: String
-    let country: String
-    let contactNameOnInvoices: Bool
-    let defaultPaymentTermsInDays: Int
-    let locale: String
-    let accountBalance: String
-    let usesContactInvoiceSequence: Bool
-    let chargeSalesTax: String
-    let salesTaxRegistrationNumber: String
-    let activeProjectsCount: Int
-    let directDebitMandateState: String
+    let billingEmail: String?
+    let phoneNumber: String?
+    let mobile: String?
+    let address1: String?
+    let address2: String?
+    let address3: String?
+    let town: String?
+    let region: String?
+    let postcode: String?
+    let country: String?
+    let contactNameOnInvoices: Bool?
+    let defaultPaymentTermsInDays: Int?
+    let locale: String?
+    let accountBalance: String?
+    let usesContactInvoiceSequence: Bool?
+    let chargeSalesTax: String?
+    let salesTaxRegistrationNumber: String?
+    let activeProjectsCount: Int?
+    let directDebitMandateState: String?
     let status: String
     let createdAt: String
     let updatedAt: String    

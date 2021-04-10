@@ -2,7 +2,7 @@
 import Alamofire
 import Foundation
 
-protocol ContactsRepository {
+public protocol ContactsRepository {
     
     func listContacts(viewFilter: ContactFilterViewType,
                       sortOrder: ContactSortOrderType,
@@ -19,16 +19,13 @@ protocol ContactsRepository {
                        onCompletion: @escaping (Result<Bool, Error>) -> Void)
 }
 
-class StandardContactsRepository: Repository, ContactsRepository {
+public final class StandardContactsRepository: Repository, ContactsRepository {
     
-    private let endpoint: String
-    
-    override init(baseURL: String) {
-        self.endpoint = "\(baseURL)/contacts"
-        super.init(baseURL: baseURL)
+    public init(baseURL: String, sessionManager: Session) {
+        super.init(baseURL: baseURL, path: "/contacts", sessionManager: sessionManager)
     }
     
-    func listContacts(viewFilter: ContactFilterViewType = .all,
+    public func listContacts(viewFilter: ContactFilterViewType = .all,
                       sortOrder: ContactSortOrderType = .name,
                       sortAscending: Bool = true,
                       onCompletion: @escaping (Result<[Contact], Error>) -> Void) {
@@ -42,7 +39,7 @@ class StandardContactsRepository: Repository, ContactsRepository {
         let parameters = ["view" : viewFilter.rawValue,
                           "sort" : sort]
         
-        AF.request(endpoint, method: .get, parameters: parameters).responseJSON { [weak self] response in
+        sessionManager.request(apiURL, method: .get, parameters: parameters).responseJSON { [weak self] response in
             guard let self = self else { return }
             
             switch response.result {
@@ -53,9 +50,11 @@ class StandardContactsRepository: Repository, ContactsRepository {
                         let contactResponse = try decoder.decode(ContactsResponse.self, from: contactsData)
                         onCompletion(.success(contactResponse.contacts))
                     } catch {
+                        print("What happened?")
                         onCompletion(.failure(self.badResponse()))
                     }
                 } else {
+                    print("No data!")
                     onCompletion(.failure(self.badResponse()))
                 }
             case .failure(let error):
@@ -64,7 +63,7 @@ class StandardContactsRepository: Repository, ContactsRepository {
         }
     }
     
-    func createContact(contact: Contact,
+    public func createContact(contact: Contact,
                        onCompletion: @escaping (Result<Contact, Error>) -> Void) {
         
         if contact.id != nil {
@@ -74,7 +73,7 @@ class StandardContactsRepository: Repository, ContactsRepository {
         
         let parameters = ["contact" : contact]
         
-        AF.request(endpoint, method: .post, parameters: parameters).responseJSON { [weak self] response in
+        sessionManager.request(apiURL, method: .post, parameters: parameters).responseJSON { [weak self] response in
             guard let self = self else { return }
 
             switch response.result {
@@ -96,7 +95,7 @@ class StandardContactsRepository: Repository, ContactsRepository {
         }
     }
     
-    func fetchContact(id: Int,
+    public func fetchContact(id: Int,
                       onCompletion: @escaping (Result<Contact, Error>) -> Void) {
         
         if id <= 0 {
@@ -104,7 +103,7 @@ class StandardContactsRepository: Repository, ContactsRepository {
             return
         }
         
-        AF.request(endpoint, method: .get, parameters: ["id" : id]).responseJSON { [weak self] response in
+        sessionManager.request(apiURL, method: .get, parameters: ["id" : id]).responseJSON { [weak self] response in
             guard let self = self else { return }
             
             switch response.result {
@@ -126,7 +125,7 @@ class StandardContactsRepository: Repository, ContactsRepository {
         }
     }
     
-    func deleteContact(id: Int,
+    public func deleteContact(id: Int,
                        onCompletion: @escaping (Result<Bool, Error>) -> Void) {
         
         if id <= 0 {
@@ -134,7 +133,7 @@ class StandardContactsRepository: Repository, ContactsRepository {
             return
         }
         
-        AF.request(endpoint, method: .delete, parameters: ["id" : id]).response { response in
+        sessionManager.request(apiURL, method: .delete, parameters: ["id" : id]).response { response in
             if response.error?.underlyingError != nil {
                 onCompletion(.failure(response.error!.underlyingError!))
             } else {
@@ -158,7 +157,7 @@ class StandardContactsRepository: Repository, ContactsRepository {
     }
 }
 
-enum ContactFilterViewType: String {
+public enum ContactFilterViewType: String {
     case all = "all"
     case active = "active"
     case clients = "clients"
@@ -170,7 +169,7 @@ enum ContactFilterViewType: String {
     case hidden = "hidden"
 }
 
-enum ContactSortOrderType: String {
+public enum ContactSortOrderType: String {
     case name = "name"
     case createdAt = "created_at"
     case updatedAt = "updated_at"
