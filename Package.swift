@@ -5,6 +5,8 @@ import PackageDescription
 
 let package = Package(
     name: "FreeAgent",
+    platforms: [.macOS(.v10_12),
+                .iOS(.v11)],
     products: [
         .library(
             name: "FreeAgent",
@@ -16,7 +18,7 @@ let package = Package(
     targets: [
         .target(
             name: "FreeAgent",
-            dependencies: []),
+            dependencies: ["Alamofire"]),
         .testTarget(
             name: "FreeAgentTests",
             dependencies: ["FreeAgent"]),
