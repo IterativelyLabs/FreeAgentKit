@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'freeagent-lib'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'A Swift client library for FreeAgent'
   s.description      = <<-DESC
   A Swift client implementation that facilitates access to FreeAgent data for an account user
