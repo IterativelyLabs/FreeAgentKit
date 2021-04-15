@@ -14,5 +14,6 @@ Pod::Spec.new do |s|
   s.swift_version = '5.3'
 
   s.ios.deployment_target = '11.0'
+  s.osx.deployment_target = '11.0'
   s.dependency 'Alamofire'
 end
