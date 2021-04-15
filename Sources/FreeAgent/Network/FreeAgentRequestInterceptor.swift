@@ -4,8 +4,11 @@ import Foundation
 
 internal final class FreeAgentRequestInterceptor: Alamofire.RequestInterceptor {
 
-    // FIXME: Remove this and get it from keychain
-    private let accessToken = "1ABPaABv--RzSbmpH4bGOOpzAXgUMIq_nGVQdG8f7"
+    private let accessToken: String
+    
+    init(accessToken: String) {
+        self.accessToken = accessToken
+    }
     
     public func adapt(_ urlRequest: URLRequest, for session: Session,
                       completion: @escaping (Result<URLRequest, Error>) -> Void) {

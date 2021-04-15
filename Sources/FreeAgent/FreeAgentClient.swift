@@ -16,9 +16,9 @@ public class FreeAgentClient {
     }()
     
     
-    public init(baseURL: String) {
+    public init(baseURL: String, accessToken: String) {
         self.baseURL = baseURL
-        self.sessionManager = Alamofire.Session(interceptor: FreeAgentRequestInterceptor())
+        self.sessionManager = Alamofire.Session(interceptor: FreeAgentRequestInterceptor(accessToken: accessToken))
     }
     
     
