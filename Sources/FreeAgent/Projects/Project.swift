@@ -3,25 +3,25 @@ import Foundation
 
 public struct Project: Decodable {
     
-    let id: Int?
-    let url: String
-    let name: String
-    let contact: String
-    let contactName: String
-    let budget: Double
-    let budgetUnits: BudgetUnit
-    let isIR35: Bool
-    let status: ProjectStatus
-    let normalBillingRate: Double
-    let hoursPerDay: Double
-    let usesProjectInvoiceSequence: Bool
-    let currency: String
-    let billingPeriod: BillingPeriod
-    let startsOn: Date?
-    let endsOn: Date?
-    let includeUnbilledTimeInProfitability: Bool
-    let createdAt: String
-    let updatedAt: String
+    public let id: Int?
+    public let url: String
+    public let name: String
+    public let contact: String
+    public let contactName: String
+    public let budget: Double
+    public let budgetUnits: BudgetUnit
+    public let isIR35: Bool
+    public let status: ProjectStatus
+    public let normalBillingRate: Double
+    public let hoursPerDay: Double
+    public let usesProjectInvoiceSequence: Bool
+    public let currency: String
+    public let billingPeriod: BillingPeriod
+    public let startsOn: Date?
+    public let endsOn: Date?
+    public let includeUnbilledTimeInProfitability: Bool
+    public let createdAt: String
+    public let updatedAt: String
 
     enum CodingKeys: String, CodingKey {
         case id = "id"

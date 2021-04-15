@@ -1,34 +1,34 @@
 import Foundation
 
 public struct Contact: Codable {
-    let id: Int?
-    let url: String
-    let firstName: String?
-    let lastName: String?
-    let organisationName: String?
-    let email: String
-    let billingEmail: String?
-    let phoneNumber: String?
-    let mobile: String?
-    let address1: String?
-    let address2: String?
-    let address3: String?
-    let town: String?
-    let region: String?
-    let postcode: String?
-    let country: String?
-    let contactNameOnInvoices: Bool?
-    let defaultPaymentTermsInDays: Int?
-    let locale: String?
-    let accountBalance: String?
-    let usesContactInvoiceSequence: Bool?
-    let chargeSalesTax: ChargeSalesTax
-    let salesTaxRegistrationNumber: String?
-    let activeProjectsCount: Int?
-    let directDebitMandateState: DirectDebitMandateState?
-    let status: ContactStatus
-    let createdAt: String
-    let updatedAt: String    
+    public let id: Int?
+    public let url: String
+    public let firstName: String?
+    public let lastName: String?
+    public let organisationName: String?
+    public let email: String
+    public let billingEmail: String?
+    public let phoneNumber: String?
+    public let mobile: String?
+    public let address1: String?
+    public let address2: String?
+    public let address3: String?
+    public let town: String?
+    public let region: String?
+    public let postcode: String?
+    public let country: String?
+    public let contactNameOnInvoices: Bool?
+    public let defaultPaymentTermsInDays: Int?
+    public let locale: String?
+    public let accountBalance: String?
+    public let usesContactInvoiceSequence: Bool?
+    public let chargeSalesTax: ChargeSalesTax
+    public let salesTaxRegistrationNumber: String?
+    public let activeProjectsCount: Int?
+    public let directDebitMandateState: DirectDebitMandateState?
+    public let status: ContactStatus
+    public let createdAt: String
+    public let updatedAt: String
     
     enum CodingKeys: String, CodingKey {
         case id = "id"

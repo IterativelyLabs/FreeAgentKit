@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'freeagent-lib'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'A Swift client library for FreeAgent'
   s.description      = <<-DESC
   A Swift client implementation that facilitates access to FreeAgent data for an account user
@@ -12,7 +12,6 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/IterativelyLabs/freeagent-lib.git', :tag => s.version.to_s }
   s.source_files = 'Sources/FreeAgent/**/*'
   s.swift_version = '5.3'
-
   s.ios.deployment_target = '11.0'
   s.osx.deployment_target = '11.0'
   s.dependency 'Alamofire'
