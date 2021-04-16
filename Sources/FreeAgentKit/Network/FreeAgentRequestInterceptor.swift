@@ -2,7 +2,7 @@
 import Alamofire
 import Foundation
 
-internal final class FreeAgentRequestInterceptor: Alamofire.RequestInterceptor {
+public final class FreeAgentRequestInterceptor: Alamofire.RequestInterceptor {
 
     private let accessToken: String
     

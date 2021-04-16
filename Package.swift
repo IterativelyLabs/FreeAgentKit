@@ -4,23 +4,23 @@
 import PackageDescription
 
 let package = Package(
-    name: "FreeAgent",
+    name: "FreeAgentKit",
     platforms: [.macOS(.v10_12),
                 .iOS(.v11)],
     products: [
         .library(
-            name: "FreeAgent",
-            targets: ["FreeAgent"]),
+            name: "FreeAgentKit",
+            targets: ["FreeAgentKit"]),
     ],
     dependencies: [
         .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.2.0"))
     ],
     targets: [
         .target(
-            name: "FreeAgent",
+            name: "FreeAgentKit",
             dependencies: ["Alamofire"]),
         .testTarget(
             name: "FreeAgentTests",
-            dependencies: ["FreeAgent"]),
+            dependencies: ["FreeAgentKit"]),
     ]
 )
