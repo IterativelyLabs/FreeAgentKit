@@ -6,7 +6,7 @@ public final class FreeAgentRequestInterceptor: Alamofire.RequestInterceptor {
 
     private let accessToken: String
     
-    init(accessToken: String) {
+    public init(accessToken: String) {
         self.accessToken = accessToken
     }
     

@@ -12,7 +12,7 @@ public protocol ProjectsRepository {
 
 public class StandardProjectsRepository: Repository, ProjectsRepository {
     
-    init(baseURL: String, sessionManager: Session) {
+    public init(baseURL: String, sessionManager: Session) {
         super.init(baseURL: baseURL, path: "/projects", sessionManager: sessionManager)
     }
     

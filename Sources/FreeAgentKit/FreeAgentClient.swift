@@ -15,6 +15,10 @@ public class FreeAgentClient {
         return StandardProjectsRepository(baseURL: baseURL, sessionManager: sessionManager)
     }()
     
+    private lazy var usersRepository: UsersRepository = {
+        return StandardUsersRepository(baseURL: baseURL, sessionManager: sessionManager)
+    }()
+    
     
     public init(baseURL: String, accessToken: String) {
         self.baseURL = baseURL
@@ -25,7 +29,6 @@ public class FreeAgentClient {
     public func listContacts(viewFilter: ContactFilterViewType = .all,
                              sortOrder: ContactSortOrderType = .name, sortAscending:Bool = true,
                              onCompletion: @escaping (Result<[Contact], Error>) -> Void) {
-        
         contactsRepository.listContacts(viewFilter: viewFilter, sortOrder: sortOrder,
                                         sortAscending: sortAscending, onCompletion: onCompletion)
     }
@@ -34,8 +37,12 @@ public class FreeAgentClient {
                              sortOrder: ProjectSortOrderType = .name,
                              sortAscending: Bool = true,
                              onCompletion: @escaping (Result<[Project], Error>) -> Void) {
-        
         projectsRepository.listProjects(viewFilter: viewFilter, sortOrder: sortOrder,
                                 sortAscending: sortAscending, onCompletion: onCompletion)
+    }
+    
+    
+    public func currentActiveUser(_ onCompletion: @escaping (Result<User, Error>) -> Void) {
+        usersRepository.currentActiveUser(onCompletion: onCompletion)
     }
 }
